@@ -1,0 +1,10 @@
+{
+  "name": "sample-node-jenkins",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node tests/app.test.js",
+    "build": "echo 'Build step complete!'"
+  },
+  "dependencies": {}
+}
