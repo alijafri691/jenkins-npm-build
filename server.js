@@ -1,9 +1,11 @@
 const http = require("http");
 
+const PORT = process.env.PORT || 3000;
+
 const server = http.createServer((req, res) => {
   res.end("Hello from Node app running through Jenkins!");
 });
 
-server.listen(8080, () => {
-  console.log("Server running on port 8080");
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
