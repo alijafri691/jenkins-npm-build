@@ -1,42 +1,27 @@
-pipeline{
+pipeline {
     agent any
 
-    stages{
+    stages {
 
-        stage("Npm install"){
-            steps{
-                sh 'npm install'
-            }
-        }
-
-        stage("Test"){
-            steps{
+        stage("Test") {
+            steps {
                 sh 'npm test'
             }
         }
 
-        stage('Build'){
-            steps{
-                sh 'npm run build'
-            }
-        }
-
-        stage("Docker Build"){
-            steps{
+        stage("Build Docker Image") {
+            steps {
                 sh "docker build -t my-jenkins-image:latest ."
             }
         }
 
-        stage("Docker Run"){
-            steps{
+        stage("Run Container") {
+            steps {
                 sh '''
-               docker rm -f sample-container-jenkins || true
+                docker rm -f sample-container-jenkins || true
                 docker run -d -p 3000:3000 --name sample-container-jenkins my-jenkins-image
                 '''
             }
         }
-
-
-
     }
 }
