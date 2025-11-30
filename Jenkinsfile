@@ -23,7 +23,7 @@ pipeline{
 
         stage("Docker Build"){
             steps{
-                sh "Docker build -t my-jenkins-image:latest ."
+                sh "docker build -t my-jenkins-image:latest ."
             }
         }
 
