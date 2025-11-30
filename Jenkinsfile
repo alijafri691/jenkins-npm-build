@@ -10,7 +10,7 @@ pipeline{
 
         stage('Build'){
             steps{
-                sh 'npm buld'
+                sh 'npm build'
             }
         }
     }
