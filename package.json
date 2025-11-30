@@ -4,7 +4,7 @@
   "scripts": {
     "start": "node server.js",
     "test": "node tests/app.test.js",
-    "build": "echo 'Build step complete!'"
+    "build": "mkdir -p dist && cp server.js dist/server.js"
   },
   "dependencies": {}
 }
