@@ -6,6 +6,7 @@ pipeline {
         stage("Test") {
             steps {
                 sh 'npm test'
+                echo "Excuting the Branch Name $BRANCH_NAME"
             }
         }
 
