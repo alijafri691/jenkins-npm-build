@@ -18,8 +18,8 @@ pipeline {
         stage("Run Container") {
             steps {
                 sh '''
-                docker rm -f sample-container-jenkins || true
-                docker run -d -p 3000:3000 --name sample-container-jenkins my-jenkins-image
+                docker rm -f sample-container-jenkins2 || true
+                docker run -d -p 3000:3000 --name sample-container-jenkins2 my-jenkins-image
                 '''
             }
         }
