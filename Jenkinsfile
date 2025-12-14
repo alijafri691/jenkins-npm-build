@@ -9,19 +9,27 @@ pipeline {
             }
         }
 
-        stage("Build Docker Image") {
-            steps {
-                sh "docker build -t my-jenkins-image:latest ."
+ 
+        stage("Docker image build and run Container") {
+            when{
+                expression{
+                    BRANCH_NAME == 'master'
+                }
+                
             }
-        }
-
-        stage("Run Container") {
             steps {
                 sh '''
-                docker rm -f sample-container-jenkins2 || true
-                docker run -d -p 3000:3000 --name sample-container-jenkins2 my-jenkins-image
+                docker build -t my-jenkins-image:latest .
+                docker rm -f sample-container-jenkins || true
+                docker run -d -p 3000:3000 --name sample-container-jenkins my-jenkins-image
                 '''
             }
         }
+          stage("Final") {
+            steps {
+                sh 'npm test'
+            }
+        }
+        
     }
 }
